@@ -1,0 +1,17 @@
+.MuiContainer-root.register-page {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    padding: 60px 20px;
+
+    .MuiBox-root.register-page__title {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .MuiDivider-root.register-page--divider {
+        margin-bottom: 1rem;
+    }
+}

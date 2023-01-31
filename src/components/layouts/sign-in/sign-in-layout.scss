@@ -1,0 +1,17 @@
+.MuiContainer-root.login-page {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    padding: 60px 20px;
+
+    .MuiPaper-root.login-page__card {
+        padding: 3rem;
+
+        .MuiBox-root.login-pag__card__title {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+    }
+}

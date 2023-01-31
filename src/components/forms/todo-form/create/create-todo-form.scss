@@ -1,0 +1,28 @@
+.create-todo-form {
+    margin-top: 1rem;
+
+    .MuiBox-root.helper-text {
+        margin-top: 1rem;
+    }
+
+    .MuiBox-root.create-todo-form__user-inputs {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .MuiTextField-root {
+        .MuiFormHelperText-root {
+            user-select: none;
+        }
+
+        &:first-of-type {
+            margin-right: 1rem;
+
+        }
+    }
+
+    .MuiBox-root.add-todo-btn {
+        display: flex;
+        justify-content: flex-end;
+    }
+}

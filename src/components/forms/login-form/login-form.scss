@@ -1,0 +1,20 @@
+.login-form {
+    .MuiBox-root.helper-text {
+        margin-top: 1rem;
+    }
+
+    a {
+        color: -webkit-link;
+        text-decoration: underline;
+    }
+
+    .MuiTypography-root.login-form__link {
+        margin-top: 1rem;
+    }
+
+    .MuiBox-root.login-button {
+        margin-top: 1.5rem;
+        display: flex;
+        justify-content: flex-end;
+    }
+}

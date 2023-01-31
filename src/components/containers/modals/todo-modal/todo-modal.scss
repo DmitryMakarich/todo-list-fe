@@ -1,0 +1,11 @@
+.MuiContainer-root.todo-modal {
+    display: flex;
+    height: 100%;
+
+    .MuiPaper-root.todo-modal__content {
+        position: relative;
+        padding: 1rem;
+        margin: auto;
+        width: 100%;
+    }
+}

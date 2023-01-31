@@ -1,0 +1,20 @@
+.register-form {
+    .MuiBox-root.helper-text {
+        margin-top: 1rem;
+    }
+
+    .MuiTypography-root.login-link {
+        margin-top: 0.5rem;
+
+        a {
+            color: -webkit-link;
+            text-decoration: underline;
+        }
+    }
+
+    .MuiBox-root.register-button {
+        margin-top: 1.5rem;
+        display: flex;
+        justify-content: flex-end;
+    }
+}

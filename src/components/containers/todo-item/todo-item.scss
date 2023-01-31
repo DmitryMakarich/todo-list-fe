@@ -1,0 +1,51 @@
+.MuiPaper-root.todo-item {
+    position: relative;
+    padding: 1rem;
+
+    .MuiBox-root.todo-item__status {
+        position: absolute;
+        top: 5%;
+        left: 1%;
+    }
+
+    .MuiBox-root.todo-item__pen-icon {
+        position: absolute;
+        top: 10%;
+        right: 2%;
+    }
+
+    .MuiBox-root.todo-item__heading {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 0.5rem;
+    }
+
+    .MuiBox-root.todo-item__text {
+        overflow-wrap: break-word;
+        user-select: none;
+
+        .todo-item__text__view-btn {
+            user-select: none;
+            text-decoration: underline;
+            color: #1976d2;
+            margin-left: 0.5rem;
+        }
+    }
+
+    .MuiBox-root.todo-item__additional {
+        display: flex;
+        justify-content: space-between;
+
+        .MuiTypography-root.todo-item__additional--updated {
+            margin-top: auto;
+        }
+
+        .MuiBox-root.todo-item__additional__user {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+
+
+    }
+}

@@ -1,0 +1,23 @@
+.update-todo-form {
+    margin-top: 1rem;
+
+    .MuiBox-root.update-todo-form__status {
+        position: absolute;
+        top: 2%;
+        right: 2%;
+    }
+
+    .MuiBox-root.helper-text {
+        margin-top: 1rem;
+    }
+
+    .MuiBox-root.update-todo-form__user-inputs {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .MuiBox-root.add-todo-btn {
+        display: flex;
+        justify-content: flex-end;
+    }
+}
