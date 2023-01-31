@@ -45,7 +45,6 @@ function* RegisterSaga({ payload }: ActionType<typeof registerAction>) {
 
     if ("token" in data && data.token) {
       yield put(setAuthenticatedAction(data.token));
-      localStorage.setItem("token", data.token);
       yield put(setShowingSuccessAuthToastAction(true));
     } else if ("exists" in data && data.exists)
       throw new Error(ERROR_MESSAGES.USER_EXISTS);

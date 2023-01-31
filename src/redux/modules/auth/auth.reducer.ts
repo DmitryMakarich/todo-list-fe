@@ -1,5 +1,8 @@
 import { createReducer } from "typesafe-actions";
-import { removeAxiosAuthorization } from "../../../api/base.api";
+import {
+  removeAxiosAuthorization,
+  setAxiosAuthorization,
+} from "../../../api/base.api";
 import { IUser, USER_ROLE } from "../../../interfaces/IUser";
 import { Actions } from "../../root.actions";
 import {
@@ -29,7 +32,9 @@ const initialState: IUserReducer = {
 export const authReducer = createReducer<IUserReducer, Actions>(initialState)
   .handleAction(setAuthenticatedAction, (state, { payload }) => {
     const tokenData: IUserTokenData = JSON.parse(atob(payload.split(".")[1]));
-
+    localStorage.setItem("token", payload);
+    setAxiosAuthorization(payload);
+    
     return {
       ...state,
       user: tokenData,
