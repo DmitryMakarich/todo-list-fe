@@ -1,4 +1,5 @@
 import { createReducer } from "typesafe-actions";
+import { removeAxiosAuthorization } from "../../../api/base.api";
 import { ITodo } from "../../../interfaces/ITodo";
 import { Actions } from "../../root.actions";
 import {
@@ -9,6 +10,7 @@ import {
   setSortByOptionAction,
   setTodosAction,
   setTodosFetchingAction,
+  updateTodoAction,
 } from "./todo.actions";
 
 export enum SORT_BY {
@@ -63,6 +65,14 @@ export const todoReducer = createReducer<ITodoReducer, Actions>(initialState)
     ...state,
     showErrorToast: payload,
   }))
+  .handleAction(updateTodoAction, (state) => {
+    if (!localStorage.getItem("token")) removeAxiosAuthorization();
+
+    return {
+      ...state,
+      fetching: true,
+    };
+  })
   .handleAction(setShowingSuccessToastAction, (state, { payload }) => ({
     ...state,
     showSuccessToast: payload,
