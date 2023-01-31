@@ -1,18 +1,21 @@
 import React from "react";
 import {
   FormControl,
+  IconButton,
   InputLabel,
   MenuItem,
   Select,
   SelectChangeEvent,
 } from "@mui/material";
+import CloseIcon from "@mui/icons-material/Close";
 import { IOption } from "../../../interfaces/IOptions";
+import { SORT_BY } from "../../../redux/modules/todo/todo.reducer";
 
 interface IFormSelectProps {
   label: string;
   value: string;
   options: IOption[];
-  handleChange: (event: SelectChangeEvent) => void;
+  handleChange: (value?: SORT_BY) => void;
 }
 
 export const FormSelect = ({
@@ -29,7 +32,17 @@ export const FormSelect = ({
         id="demo-simple-select"
         value={value}
         label={label}
-        onChange={handleChange}
+        onChange={(event: SelectChangeEvent<string>) =>
+          handleChange(event.target.value as SORT_BY)
+        }
+        endAdornment={
+          <IconButton
+            sx={{ display: value ? "" : "none" }}
+            onClick={() => handleChange()}
+          >
+            <CloseIcon />
+          </IconButton>
+        }
       >
         {options.map((o) => (
           <MenuItem key={o.value} value={o.value}>

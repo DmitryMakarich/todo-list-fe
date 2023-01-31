@@ -26,3 +26,7 @@ export const axiosInstance = getApiAxiosInstance(
 export const setAxiosAuthorization = (accessToken: string) => {
   axiosInstance.defaults.headers["Authorization"] = `Bearer ${accessToken}`;
 };
+
+export const removeAxiosAuthorization = () => {
+  delete axiosInstance.defaults.headers["Authorization"];
+};

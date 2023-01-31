@@ -1,4 +1,5 @@
 import { createReducer } from "typesafe-actions";
+import { removeAxiosAuthorization } from "../../../api/base.api";
 import { IUser, USER_ROLE } from "../../../interfaces/IUser";
 import { Actions } from "../../root.actions";
 import {
@@ -49,6 +50,7 @@ export const authReducer = createReducer<IUserReducer, Actions>(initialState)
   }))
   .handleAction(logoutAction, (state) => {
     localStorage.removeItem("token");
+    removeAxiosAuthorization();
 
     return { ...state, authenticated: false };
   });

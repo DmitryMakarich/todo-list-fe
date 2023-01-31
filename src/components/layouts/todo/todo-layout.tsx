@@ -2,36 +2,25 @@ import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   Alert,
-  Box,
-  Button,
   Container,
-  IconButton,
   Pagination,
-  SelectChangeEvent,
   Snackbar,
 } from "@mui/material";
-import SwapVertIcon from "@mui/icons-material/SwapVert";
-import { SORT_BY } from "../../../redux/modules/todo/todo.reducer";
 import {
   createTodoAction,
   getTodosAction,
-  setOrderOptionAction,
   setPageAction,
   setShowingErrorToastAction,
   setShowingSuccessToastAction,
-  setSortByOptionAction,
   updateTodoAction,
 } from "../../../redux/modules/todo/todo.actions";
 import { ICreateTodoAttributes, ITodo } from "../../../interfaces/ITodo";
 import {
-  getSortOptionsSelector,
   getToastsStatusSelector,
   getTodoPaginatedSelector,
   getTodosFetchingSelector,
   getTodosSelector,
 } from "../../../redux/modules/todo/todo.selectors";
-import { FormSelect } from "../../containers/form-select/form-select";
-import { invertOrder } from "../../../helpers/invert-order.helper";
 import { setShowingSuccessAuthToastAction } from "../../../redux/modules/auth/auth.actions";
 import { getToastStatusSelector } from "../../../redux/modules/auth/auth.selectors";
 import {
@@ -40,6 +29,7 @@ import {
 } from "../../../interfaces/ToastMessages";
 import { TodoList } from "../../containers/todo-list/todo-list";
 import { CreateTodoModal } from "../../containers/modals/todo-modal/create-modal/create-modal";
+import { TodoInputs } from "../../containers/todo-inputs/todo-inputs";
 
 import "./todo-layout.scss";
 
@@ -55,7 +45,6 @@ export const TodoLayout = () => {
     getToastsStatusSelector
   );
   const showSuccessAuthToast = useSelector(getToastStatusSelector);
-  const { sortBy, order } = useSelector(getSortOptionsSelector);
 
   useEffect(() => {
     dispatch(getTodosAction());
@@ -111,47 +100,10 @@ export const TodoLayout = () => {
     [total, limit]
   );
 
-  const sortOptions = useMemo(
-    () => Object.values(SORT_BY).map((s) => ({ label: s, value: s })),
-    []
-  );
-
-  const handleChangeSort = useCallback(
-    (event: SelectChangeEvent<string>) => {
-      dispatch(setSortByOptionAction(event.target.value as SORT_BY));
-    },
-    [dispatch]
-  );
-
-  const handleChangeOrder = useCallback(() => {
-    dispatch(setOrderOptionAction(invertOrder(order)));
-  }, [dispatch, order]);
-
   return (
     <Container maxWidth={false} className="todo-layout">
       <Container maxWidth="lg" className="todo-layout__container">
-        <Box className="todo-layout__actions">
-          <Button
-            onClick={handleOpenModal}
-            variant="outlined"
-            color="success"
-            size="small"
-            type="submit"
-          >
-            Create Todo
-          </Button>
-          <Box className="todo-layout__actions__sort">
-            <IconButton color="primary" onClick={handleChangeOrder}>
-              <SwapVertIcon />
-            </IconButton>
-            <FormSelect
-              label={"Sort by"}
-              value={sortBy || ""}
-              options={sortOptions}
-              handleChange={handleChangeSort}
-            />
-          </Box>
-        </Box>
+        <TodoInputs handleOpenModal={handleOpenModal} />
         <TodoList
           todos={todos}
           fetching={fetching}
